@@ -2,7 +2,7 @@ package com.learn.spring.boot.inventory.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.learn.spring.boot.inventory.model.Inventory;
+import com.learn.spring.boot.inventory.entity.Inventory;
 
 /**
  * JpaRepository is the JPA specific Repository interface. 

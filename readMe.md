@@ -15,6 +15,8 @@ Implementation
 --------------
 Implementation reference of [Spring Boot + Hibernate + JPA](https://www.springboottutorial.com/hibernate-jpa-tutorial-with-spring-boot-starter-jpa)
 
+Mapping of entities to POJO is done using [Jackson ObjectMapper](https://www.tutorialspoint.com/jackson/jackson_objectmapper.htm)
+
 
 
 Interesting reads
