@@ -8,3 +8,9 @@ Commit on 23-02-21. Author - Karen
 ----------------------------------
 * Entity and POJO separated
 * Object mapper implemented
+
+Commit on 26-02-21 Author - Nitish
+------------------------------------
+* Added controller to handle part error in case user enters a wrong path
+* https://www.baeldung.com/spring-boot-custom-error-page
+* Added a delete api

@@ -1,5 +1,7 @@
 package com.learn.spring.boot.inventory.controller;
 
+import static java.lang.String.valueOf;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -84,7 +86,7 @@ public class InventoryController {
 	public String addInventory(@RequestBody Inventory inventory) throws BadRequestException {
 		com.learn.spring.boot.inventory.entity.Inventory inventoryEntity = null;
 		try {
-			log.info("Adding iventory item with name = " + inventory.getItemName());
+			log.info("Adding inventory item with name = " + inventory.getItemName());
 
 			inventoryEntity = inventoryRepository.save(mapper.convert(inventory));
 
@@ -96,6 +98,34 @@ public class InventoryController {
 		log.info("Inventory item '" + inventory.getItemName() + "' successfully added with id = "
 				+ inventoryEntity.getId());
 		return "Item added successfully with id " + inventoryEntity.getId();
+	}
+
+	/**
+	 * Deletes an entry from Inventory
+	 * 
+	 * @param inventory details of Item to be deleted
+	 * @return message of successful deletion
+	 * @throws ItemNotFoundException exception is thrown in case item with provided
+	 *                               id does not exist
+	 * @throws BadRequestException   Exception is thrown when deletion fails
+	 */
+	@RequestMapping(value = "/inventory/{id}", method = RequestMethod.DELETE)
+	public String deleteInventory(@PathVariable(value = "id") String id)
+			throws ItemNotFoundException, BadRequestException {
+		com.learn.spring.boot.inventory.entity.Inventory inventoryEntity=null;
+		try {
+			log.info("Deleting inventory with id" + id);
+			this.getInventory(valueOf(id));
+			inventoryEntity = inventoryRepository
+					.findById(Integer.parseInt(id)).get();
+			inventoryRepository.delete(inventoryEntity);
+		} catch (IllegalArgumentException | DataIntegrityViolationException ex) {
+			log.error(ex.getMessage());
+			throw new BadRequestException(id, ex.getMessage());
+		}
+		log.info(
+				"Inventory item '" + inventoryEntity.getItemName() + "' successfully deleted with id = " + inventoryEntity.getId());
+		return "Item deleted successfully with id " + inventoryEntity.getId();
 	}
 
 }
