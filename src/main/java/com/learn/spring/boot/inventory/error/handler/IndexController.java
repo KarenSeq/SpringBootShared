@@ -1,4 +1,4 @@
-package com.learn.spring.boot.inventory.errorhandelling;
+package com.learn.spring.boot.inventory.error.handler;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +22,7 @@ public class IndexController implements ErrorController{
      */
     @RequestMapping(value = PATH)
     public String error() {
-        return "No path found";
+        return "No service found for specified path";
     }
 
     @Override

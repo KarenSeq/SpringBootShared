@@ -1,15 +1,10 @@
 package com.learn.spring.boot.inventory.controller;
 
-import static java.lang.String.valueOf;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,9 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.learn.spring.boot.inventory.exception.BadRequestException;
 import com.learn.spring.boot.inventory.exception.ItemNotFoundException;
-import com.learn.spring.boot.inventory.mapper.GenericMapper;
 import com.learn.spring.boot.inventory.model.Inventory;
-import com.learn.spring.boot.inventory.repository.InventoryRepository;
+import com.learn.spring.boot.inventory.service.impl.InventoryServiceImpl;
 
 /**
  * Has mappings of requests.
@@ -35,10 +29,7 @@ public class InventoryController {
 	private static final Logger log = LoggerFactory.getLogger(InventoryController.class);
 
 	@Autowired
-	InventoryRepository inventoryRepository;
-
-	@Autowired
-	GenericMapper mapper;
+	InventoryServiceImpl inventoryService;
 
 	/**
 	 * Fetches all inventories from db.
@@ -50,10 +41,7 @@ public class InventoryController {
 
 		log.info("Retrieving all inventories");
 
-		List<Inventory> inventories = new ArrayList<>();
-		inventoryRepository.findAll().stream().forEach(inventory -> inventories.add(mapper.convert(inventory)));
-
-		return inventories;
+		return inventoryService.getAllInventory();
 	}
 
 	/**
@@ -65,14 +53,10 @@ public class InventoryController {
 	 */
 	@RequestMapping(value = "/inventory/{id}", method = RequestMethod.GET)
 	public Inventory getInventory(@PathVariable(value = "id") String id) throws ItemNotFoundException {
-		int itemId = Integer.parseInt(id);
-		try {
-			log.info("Retrieving iventory item with id = " + id);
 
-			return mapper.convert(inventoryRepository.findById(itemId).get());
-		} catch (NoSuchElementException e) {
-			throw new ItemNotFoundException(id, e.getMessage());
-		}
+		log.info("Retrieving iventory item with id = " + id);
+
+		return inventoryService.getInventory(id);
 	}
 
 	/**
@@ -84,20 +68,10 @@ public class InventoryController {
 	 */
 	@RequestMapping(value = "/inventory/add", method = RequestMethod.POST)
 	public String addInventory(@RequestBody Inventory inventory) throws BadRequestException {
-		com.learn.spring.boot.inventory.entity.Inventory inventoryEntity = null;
-		try {
-			log.info("Adding inventory item with name = " + inventory.getItemName());
 
-			inventoryEntity = inventoryRepository.save(mapper.convert(inventory));
+		log.info("Adding inventory item with name = " + inventory.getItemName());
 
-		} catch (IllegalArgumentException | DataIntegrityViolationException ex) {
-			log.error(ex.getMessage());
-			throw new BadRequestException(inventory.getItemName(), ex.getMessage());
-		}
-
-		log.info("Inventory item '" + inventory.getItemName() + "' successfully added with id = "
-				+ inventoryEntity.getId());
-		return "Item added successfully with id " + inventoryEntity.getId();
+		return inventoryService.addInventory(inventory);
 	}
 
 	/**
@@ -112,20 +86,10 @@ public class InventoryController {
 	@RequestMapping(value = "/inventory/{id}", method = RequestMethod.DELETE)
 	public String deleteInventory(@PathVariable(value = "id") String id)
 			throws ItemNotFoundException, BadRequestException {
-		com.learn.spring.boot.inventory.entity.Inventory inventoryEntity=null;
-		try {
-			log.info("Deleting inventory with id" + id);
-			this.getInventory(valueOf(id));
-			inventoryEntity = inventoryRepository
-					.findById(Integer.parseInt(id)).get();
-			inventoryRepository.delete(inventoryEntity);
-		} catch (IllegalArgumentException | DataIntegrityViolationException ex) {
-			log.error(ex.getMessage());
-			throw new BadRequestException(id, ex.getMessage());
-		}
-		log.info(
-				"Inventory item '" + inventoryEntity.getItemName() + "' successfully deleted with id = " + inventoryEntity.getId());
-		return "Item deleted successfully with id " + inventoryEntity.getId();
+
+		log.info("Deleting inventory with id " + id);
+
+		return inventoryService.deleteInventory(id);
 	}
 
 }
