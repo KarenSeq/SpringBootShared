@@ -60,6 +60,19 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 		</dependency>
+		<!-- Lombok dependency for getter/setters etc -->
+		<!-- swagger - for documentation -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>2.7.0</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>2.7.0</version>
+		</dependency>
+		<!-- swagger - for documentation -->
 		<!-- enables live reload -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

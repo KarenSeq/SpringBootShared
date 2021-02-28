@@ -15,12 +15,18 @@ Implementation
 --------------
 - Implementation reference of [Spring Boot + Hibernate + JPA](https://www.springboottutorial.com/hibernate-jpa-tutorial-with-spring-boot-starter-jpa)
 
+
 - Mapping of entities to POJO is done using [Jackson ObjectMapper](https://www.tutorialspoint.com/jackson/jackson_objectmapper.htm)
+
 
 - (Whitelabel Error Page Handling)[https://www.baeldung.com/spring-boot-custom-error-page]
 
+
 - [Actuators](https://www.tutorialspoint.com/spring_boot/spring_boot_actuator.htm) - used for monitoring application. 
 Path for actuator - http://localhost:9000/actuator. This lists actuator endpoints available.
+
+
+- Swagger2 is an open source project used to generate the REST API documents for RESTful web services. Swagger2 is enabled on the boot up class and respective dependencies are added. View the swagger documentation at http://localhost:8080/swagger-ui.html
 
 
 

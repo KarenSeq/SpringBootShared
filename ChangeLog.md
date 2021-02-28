@@ -18,3 +18,7 @@ Commit on 26-02-21. Author - Nitish
 Commit on 28-02-21. Author - Karen
 ----------------------------------
 * Actuator starter and properties added;needed for application metrics & monitoring.
+
+Commit on 28-02-21. Author - Karen
+----------------------------------
+* Swagger2 enabled.
