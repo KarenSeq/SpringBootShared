@@ -22,3 +22,8 @@ Commit on 28-02-21. Author - Karen
 Commit on 28-02-21. Author - Karen
 ----------------------------------
 * Swagger2 enabled.
+
+Commit on 26-02-21. Author - Nitish
+-----------------------------------
+*Exposed /health and app /info via actuator
+*Hidden the IndexController to be exposed via swagger using @ApiIgnore on class level

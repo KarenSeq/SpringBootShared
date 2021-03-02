@@ -4,11 +4,15 @@ import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import springfox.documentation.annotations.ApiIgnore;
+
 /**
  * Handling white page error where wrong path is entered 
  * @author Nitish
+ * @ApiIgnore: Used to ignore exposing all api from this controller via swagger
  *
  */
+@ApiIgnore
 @RestController
 public class IndexController implements ErrorController{
 
