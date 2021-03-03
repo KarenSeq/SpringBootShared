@@ -14,81 +14,81 @@
 	<artifactId>Inventory</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Inventory</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Inventory application to perform crud operations on inventory items</description>
 
-	<properties>
-		<java.version>11</java.version>
-	</properties>
+		<properties>
+			<java.version>11</java.version>
+		</properties>
 
-	<!-- you do not need to specify version of dependencies. The starter-parent 
-		version is taken for all dependencies. -->
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
-		</dependency>
-		<!-- unit tests dependency -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<!-- for RESTful endpoints -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<!-- jpa dependency -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<!-- h2 database dependency -->
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<!-- <scope>runtime</scope> -->
-		</dependency>
-		<!-- monitoring dependency -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-		<!-- monitoring dependency -->
-		<!-- Lombok dependency for getter/setters etc -->
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-		</dependency>
-		<!-- Lombok dependency for getter/setters etc -->
-		<!-- swagger - for documentation -->
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger2</artifactId>
-			<version>2.7.0</version>
-		</dependency>
-		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-swagger-ui</artifactId>
-			<version>2.7.0</version>
-		</dependency>
-		<!-- swagger - for documentation -->
-		<!-- enables live reload -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<!-- enables live reload -->
-	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
+		<!-- you do not need to specify version of dependencies. The starter-parent 
+			version is taken for all dependencies. -->
+		<dependencies>
+			<dependency>
 				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+				<artifactId>spring-boot-starter</artifactId>
+			</dependency>
+			<!-- unit tests dependency -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-test</artifactId>
+				<scope>test</scope>
+			</dependency>
+			<!-- for RESTful endpoints -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-web</artifactId>
+			</dependency>
+			<!-- jpa dependency -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-data-jpa</artifactId>
+			</dependency>
+			<!-- h2 database dependency -->
+			<dependency>
+				<groupId>com.h2database</groupId>
+				<artifactId>h2</artifactId>
+				<!-- <scope>runtime</scope> -->
+			</dependency>
+			<!-- monitoring dependency -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-actuator</artifactId>
+			</dependency>
+			<!-- monitoring dependency -->
+			<!-- Lombok dependency for getter/setters etc -->
+			<dependency>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+			</dependency>
+			<!-- Lombok dependency for getter/setters etc -->
+			<!-- swagger - for documentation -->
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger2</artifactId>
+				<version>2.7.0</version>
+			</dependency>
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger-ui</artifactId>
+				<version>2.7.0</version>
+			</dependency>
+			<!-- swagger - for documentation -->
+			<!-- enables live reload -->
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-devtools</artifactId>
+				<optional>true</optional>
+			</dependency>
+			<!-- enables live reload -->
+		</dependencies>
+
+		<build>
+			<plugins>
+				<plugin>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-maven-plugin</artifactId>
+				</plugin>
+			</plugins>
+		</build>
 
 </project>
